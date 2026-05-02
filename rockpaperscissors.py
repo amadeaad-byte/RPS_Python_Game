@@ -23,3 +23,12 @@ def results(player, program):
         print("I lost! Good game.")
 
 results(player_answer, prog_answer)
+
+#Okay, I got the game working, now I want to make the program ask to play again.
+#If the player picks "Yes", the game will restart. If "No", the game will display a "good game" message then stop.
+
+#Play Again?
+y = True
+n = False
+
+print("Wanna play again?")
