@@ -1,7 +1,7 @@
 import random
 
 #Player & Program Choices
-player_answer = input().lower()
+player_answer = input("Rock, paper, or scissors?: ").lower()
 prog_choice = ["rock","paper","scissors"]
 prog_answer = random.choice(prog_choice)
 
@@ -19,6 +19,7 @@ def results(player, program):
         (program == "scissors" and player == "paper")
     ):
         print("I win! Good game.")
+    elif()
     else:
         print("I lost! Good game.")
 
@@ -31,4 +32,17 @@ results(player_answer, prog_answer)
 y = True
 n = False
 
-print("Wanna play again?")
+print("Wanna play again? (y/n)")
+play_again = input("Enter 'y' to play again or 'n' to quit: ").lower()
+if play_again == 'y':
+    while True:
+        player_answer = input("Rock, paper, or scissors?: ").lower()
+        prog_answer = random.choice(prog_choice)
+        print("I choose..." + prog_answer + "!")
+        print("Player: " + player_answer + ".") 
+        results(player_answer, prog_answer)
+        print("Wanna play again? (y/n)")
+        play_again = input("Enter 'y' to play again or 'n' to quit: ").lower()
+        if play_again == 'n':
+            print("Good game! Thanks for playing.")
+            break
