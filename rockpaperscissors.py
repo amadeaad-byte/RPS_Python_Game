@@ -1,6 +1,6 @@
 import random
 
-#Player & Program Choices
+#Player & Program Answers
 player_answer = input("Rock, paper, or scissors?: ").lower()
 prog_choice = ["rock","paper","scissors"]
 prog_answer = random.choice(prog_choice)
@@ -11,38 +11,51 @@ print("Player: " + player_answer + ".")
 
 #Determining Results
 def results(player, program):
-    if player == program:
-        print("Dang! We Tied! Let's try again.")
-    elif( 
-        (program == "rock" and player == "scissors") or
-        (program == "paper" and player == "rock") or
-        (program == "scissors" and player == "paper")
-    ):
-        print("I win! Good game.")
-    elif()
-    else:
-        print("I lost! Good game.")
-
+    while True:
+        if player == program:
+            print("Dang! We Tied! Let's try again.")
+        elif( 
+            (program == "rock" and player == "scissors") or
+            (program == "paper" and player == "rock") or
+            (program == "scissors" and player == "paper")
+        ):
+            print("I win! Good game.")
+        elif(
+            (player == "rock" and program == "scissors") or
+            (player == "paper" and program == "rock") or
+            (player == "scissors" and program == "paper")
+        ):
+            print("I lost! Good game.")
+        else:
+            print("Invalid input. Please choose rock, paper, or scissors.")
+        return
 results(player_answer, prog_answer)
 
-#Okay, I got the game working, now I want to make the program ask to play again.
-#If the player picks "Yes", the game will restart. If "No", the game will display a "good game" message then stop.
 
-#Play Again?
-y = True
-n = False
+#Play Again Loop
+# Problem: This part works, but there is a problem with the loop. The "good game, thanks for playing." message doesn't print after the user 
+# inputs "no" after the first game. It only prints after the user inputs "no" after the second game. I think this is because the 
+# loop is set to continue until the user inputs "no", but it doesn't check for that condition until after the first game is played. 
+# To fix this, I can add a check for the "no" input before the loop starts, and if the user inputs "no", it will print the 
+# message and exit the program immediately. 
 
-print("Wanna play again? (y/n)")
-play_again = input("Enter 'y' to play again or 'n' to quit: ").lower()
-if play_again == 'y':
+yes = True
+no = False
+
+print("Wanna play again? (yes/no)")
+play_again = input("Enter 'yes' to play again or 'no' to quit: ").lower()
+if play_again == 'yes':
     while True:
         player_answer = input("Rock, paper, or scissors?: ").lower()
         prog_answer = random.choice(prog_choice)
         print("I choose..." + prog_answer + "!")
         print("Player: " + player_answer + ".") 
         results(player_answer, prog_answer)
-        print("Wanna play again? (y/n)")
-        play_again = input("Enter 'y' to play again or 'n' to quit: ").lower()
-        if play_again == 'n':
+        print("Wanna play again? (yes/no)")
+        play_again = input("Enter 'yes' to play again or 'no' to quit: ").lower()
+        if play_again == 'no':
             print("Good game! Thanks for playing.")
             break
+        else: 
+            print("Invalid input. Please enter 'yes' or 'no'.")
+            continue
